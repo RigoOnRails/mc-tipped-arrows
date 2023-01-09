@@ -1,0 +1,7 @@
+name: mc-tipped-arrows
+version: 1.0.0
+main: Plugin
+description: Custom, less-expensive tipped arrow recipes.
+author: KimmyJongUno1
+website: https://github.com/RigoOnRails/mc-tipped-arrows
+api-version: 1.19
