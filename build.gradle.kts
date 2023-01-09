@@ -11,7 +11,7 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
 
-    maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
+    maven("https://repo.papermc.io/repository/maven-public/")
 }
 
 dependencies {
