@@ -19,7 +19,7 @@ import java.lang.Exception
 //Arrow of Night Vision
 //Arrow of Poison
 //Arrow of Regeneration
-Arrow of Slowness
+//Arrow of Slowness
 Arrow of Strength
 Arrow of Swiftness
 Arrow of the Turtle Master
@@ -39,14 +39,16 @@ class Plugin: JavaPlugin() {
             PotionType.NIGHT_VISION,
             PotionType.POISON,
             PotionType.REGEN,
+            PotionType.SLOWNESS,
         )
     }
 
     override fun onEnable() {
         for (potionType in TIPPED_ARROW_POTION_TYPES) {
+            // Display names courtesy of @UnicornFortune1 🤪
             val displayName = when (potionType) {
                 PotionType.FIRE_RESISTANCE -> "boom chakalakalaka"
-                PotionType.INSTANT_DAMAGE -> "wassup hoe"
+                PotionType.INSTANT_DAMAGE -> "begone thot"
                 PotionType.INSTANT_HEAL -> "hurts if ur already dead"
                 PotionType.INVISIBILITY -> "john cena"
                 PotionType.JUMP -> "bad bunny"
@@ -54,6 +56,7 @@ class Plugin: JavaPlugin() {
                 PotionType.NIGHT_VISION -> "these mushrooms go crazy"
                 PotionType.POISON -> "die slowly."
                 PotionType.REGEN -> "u be aight"
+                PotionType.SLOWNESS -> "hold your horses"
                 else -> throw Exception("Unexpected potion type")
             }
 
