@@ -32,46 +32,25 @@ class Plugin: JavaPlugin() {
 
     override fun onEnable() {
         for (potionType in TIPPED_ARROW_POTION_TYPES) {
-            // Display names courtesy of @UnicornFortune1 🤪
-            val displayName = when (potionType) {
-                PotionType.FIRE_RESISTANCE -> "boom chakalakalaka"
-                PotionType.INSTANT_DAMAGE -> "begone thot"
-                PotionType.INSTANT_HEAL -> "hurts if ur already dead"
-                PotionType.INVISIBILITY -> "john cena"
-                PotionType.JUMP -> "bad bunny"
-                PotionType.SLOW_FALLING -> "i believe i can fly"
-                PotionType.NIGHT_VISION -> "these mushrooms go crazy"
-                PotionType.POISON -> "die slowly."
-                PotionType.REGEN -> "u be aight"
-                PotionType.SLOWNESS -> "hold ya horses"
-                PotionType.STRENGTH -> "steroid arrows"
-                PotionType.SPEED -> "DO YOU WANT TO DO SOME FUCKING COCAINE"
-                PotionType.TURTLE_MASTER -> "now u a turtle"
-                PotionType.WATER_BREATHING -> "now u a fish"
-                PotionType.WEAKNESS -> "you hit like a bitch"
-                else -> throw Exception("Unexpected potion type")
-            }
-
             // Add regular recipe
-            addTippedArrowRecipe(PotionData(potionType), displayName)
+            addTippedArrowRecipe(PotionData(potionType))
 
             // Add redstone potion recipe, if possible
             if (potionType.isExtendable) {
-                addTippedArrowRecipe(PotionData(potionType, true, false), displayName)
+                addTippedArrowRecipe(PotionData(potionType, true, false))
             }
 
             // Add glowstone potion recipe, if possible
             if (potionType.isUpgradeable) {
-                addTippedArrowRecipe(PotionData(potionType, false, true), displayName)
+                addTippedArrowRecipe(PotionData(potionType, false, true))
             }
         }
     }
 
-    private fun addTippedArrowRecipe(potionData: PotionData, displayName: String) {
+    private fun addTippedArrowRecipe(potionData: PotionData) {
         // Crafting result
         val tippedArrows = ItemStack(Material.TIPPED_ARROW, 8)
         val tippedArrowsMeta = tippedArrows.itemMeta as PotionMeta
-        tippedArrowsMeta.displayName(Component.text(displayName))
         tippedArrowsMeta.basePotionData = potionData
         tippedArrows.itemMeta = tippedArrowsMeta
 
