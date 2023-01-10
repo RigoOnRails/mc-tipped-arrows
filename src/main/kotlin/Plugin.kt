@@ -12,13 +12,12 @@ class Plugin: JavaPlugin() {
     override fun onEnable() {
         // Display names courtesy of @UnicornFortune1 😜✌️
         addTippedArrowRecipe(
-            "fire_resistance",
             PotionData(PotionType.FIRE_RESISTANCE),
             "boom chakalakalaka",
         )
     }
 
-    private fun addTippedArrowRecipe(key: String, potionData: PotionData, displayName: String) {
+    private fun addTippedArrowRecipe(potionData: PotionData, displayName: String) {
         // Crafting result
         val tippedArrows = ItemStack(Material.TIPPED_ARROW, 8)
         val tippedArrowsMeta = tippedArrows.itemMeta as PotionMeta
@@ -27,7 +26,7 @@ class Plugin: JavaPlugin() {
         tippedArrows.itemMeta = tippedArrowsMeta
 
         // Require 8 arrows around 1 potion for the recipe.
-        val recipe = ShapedRecipe(NamespacedKey(this, key + "_tipped_arrow"), tippedArrows)
+        val recipe = ShapedRecipe(NamespacedKey(this, potionData.type.name + "_tipped_arrow"), tippedArrows)
         recipe.shape(
             "AAA",
             "APA",
