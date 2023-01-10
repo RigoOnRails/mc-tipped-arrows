@@ -16,6 +16,7 @@ class Plugin: JavaPlugin() {
         addTippedArrowRecipe(PotionData(PotionType.FIRE_RESISTANCE),  "boom chakalakalaka")
         addTippedArrowRecipe(PotionData(PotionType.INSTANT_DAMAGE),  "wassup hoe")
         addTippedArrowRecipe(PotionData(PotionType.INSTANT_HEAL), "hurts if ur already dead")
+        addTippedArrowRecipe(PotionData(PotionType.INVISIBILITY), "john cena")
     }
 
     private fun addTippedArrowRecipe(potionData: PotionData, displayName: String) {
