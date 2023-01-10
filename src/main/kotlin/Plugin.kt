@@ -8,15 +8,60 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.potion.PotionData
 import org.bukkit.potion.PotionType
 
-// TODO: Add support for extended or upgraded potions
-
 class Plugin: JavaPlugin() {
     override fun onEnable() {
+        data class TippedArrowRecipe(
+            val potionType: PotionType,
+            val extendable: Boolean,
+            val upgradable: Boolean,
+            val displayName: String,
+        )
+
         // Display names courtesy of @UnicornFortune1 😜
-        addTippedArrowRecipe(PotionData(PotionType.FIRE_RESISTANCE),  "boom chakalakalaka")
-        addTippedArrowRecipe(PotionData(PotionType.INSTANT_DAMAGE),  "wassup hoe")
-        addTippedArrowRecipe(PotionData(PotionType.INSTANT_HEAL), "hurts if ur already dead")
-        addTippedArrowRecipe(PotionData(PotionType.INVISIBILITY), "john cena")
+        val recipes = arrayOf(
+            TippedArrowRecipe(
+                PotionType.FIRE_RESISTANCE,
+                extendable = true,
+                upgradable = false,
+                displayName = "boom chakalakalaka",
+            ),
+            TippedArrowRecipe(
+                PotionType.INSTANT_DAMAGE,
+                extendable = false,
+                upgradable = true,
+                displayName = "wassup hoe",
+            ),
+            TippedArrowRecipe(
+                PotionType.INSTANT_HEAL,
+                extendable = false,
+                upgradable = true,
+                displayName = "hurts if ur already dead",
+            ),
+            TippedArrowRecipe(
+                PotionType.INVISIBILITY,
+                extendable = true,
+                upgradable = false,
+                displayName = "john cena",
+            ),
+        )
+
+        for (recipe in recipes) {
+            addTippedArrowRecipe(PotionData(recipe.potionType), recipe.displayName)
+
+            if (recipe.extendable) {
+                addTippedArrowRecipe(
+                    PotionData(recipe.potionType, true, false),
+                    recipe.displayName,
+                )
+            }
+
+            if (recipe.upgradable) {
+                addTippedArrowRecipe(
+                    PotionData(recipe.potionType, false, true),
+                    recipe.displayName,
+                )
+            }
+        }
     }
 
     private fun addTippedArrowRecipe(potionData: PotionData, displayName: String) {
