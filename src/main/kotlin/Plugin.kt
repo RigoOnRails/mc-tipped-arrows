@@ -58,7 +58,7 @@ class Plugin: JavaPlugin() {
                 PotionType.NIGHT_VISION -> "these mushrooms go crazy"
                 PotionType.POISON -> "die slowly."
                 PotionType.REGEN -> "u be aight"
-                PotionType.SLOWNESS -> "hold your horses"
+                PotionType.SLOWNESS -> "hold ya horses"
                 PotionType.STRENGTH -> "steroid arrows"
                 PotionType.SPEED -> "DO YOU WANT TO DO SOME FUCKING COCAINE"
                 else -> throw Exception("Unexpected potion type")
