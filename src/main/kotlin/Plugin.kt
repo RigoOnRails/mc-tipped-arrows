@@ -8,13 +8,13 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.potion.PotionData
 import org.bukkit.potion.PotionType
 
+// TODO: Add support for extended or upgraded potions
+
 class Plugin: JavaPlugin() {
     override fun onEnable() {
-        // Display names courtesy of @UnicornFortune1 😜✌️
-        addTippedArrowRecipe(
-            PotionData(PotionType.FIRE_RESISTANCE),
-            "boom chakalakalaka",
-        )
+        // Display names courtesy of @UnicornFortune1 😜
+        addTippedArrowRecipe(PotionData(PotionType.FIRE_RESISTANCE),  "boom chakalakalaka")
+        addTippedArrowRecipe(PotionData(PotionType.INSTANT_DAMAGE),  "wassup hoe")
     }
 
     private fun addTippedArrowRecipe(potionData: PotionData, displayName: String) {
