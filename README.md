@@ -9,6 +9,6 @@ In Bedrock you simply add potions to a cauldron & dip your arrows in it.
 
 While in Java, you have to fight the Ender Dragon to obtain Dragon's Breath, & then use that to create lingering potions, & finally tipped arrows.
 
-This plugin allows you to simply add a potion to a crafting table, along with 16 arrows to create 16 tipped arrows. This makes it match the same expense as Bedrock Edition.
+This plugin allows you to simply add a potion to a crafting table, with 8 arrows around it to create 8 tipped arrows.
 
 This plugin is also useful for servers running GeyserMC, where Bedrock tipped arrow functionality is disabled.
