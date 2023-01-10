@@ -15,6 +15,7 @@ import java.lang.Exception
 //Arrow of Healing
 //Arrow of Invisibility
 //Arrow of Leaping
+//Arrow of slow falling
 //Arrow of Night Vision
 //Arrow of Poison
 //Arrow of Regeneration
@@ -34,6 +35,7 @@ class Plugin: JavaPlugin() {
             PotionType.INSTANT_HEAL,
             PotionType.INVISIBILITY,
             PotionType.JUMP,
+            PotionType.SLOW_FALLING,
             PotionType.NIGHT_VISION,
             PotionType.POISON,
             PotionType.REGEN,
@@ -48,6 +50,7 @@ class Plugin: JavaPlugin() {
                 PotionType.INSTANT_HEAL -> "hurts if ur already dead"
                 PotionType.INVISIBILITY -> "john cena"
                 PotionType.JUMP -> "bad bunny"
+                PotionType.SLOW_FALLING -> "i believe i can fly"
                 PotionType.NIGHT_VISION -> "these mushrooms go crazy"
                 PotionType.POISON -> "die slowly."
                 PotionType.REGEN -> "u be aight"
