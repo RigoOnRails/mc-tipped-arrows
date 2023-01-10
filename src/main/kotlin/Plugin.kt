@@ -9,6 +9,23 @@ import org.bukkit.potion.PotionData
 import org.bukkit.potion.PotionType
 import java.lang.Exception
 
+/*
+//Arrow of Fire Resistance
+//Arrow of Harming
+//Arrow of Healing
+//Arrow of Invisibility
+//Arrow of Leaping
+Arrow of Night Vision
+Arrow of Poison
+Arrow of Regeneration
+Arrow of Slowness
+Arrow of Strength
+Arrow of Swiftness
+Arrow of the Turtle Master
+Arrow of Water Breathing
+Arrow of Weakness
+ */
+
 class Plugin: JavaPlugin() {
     companion object {
         val TIPPED_ARROW_POTION_TYPES = arrayOf(
@@ -16,6 +33,7 @@ class Plugin: JavaPlugin() {
             PotionType.INSTANT_DAMAGE,
             PotionType.INSTANT_HEAL,
             PotionType.INVISIBILITY,
+            PotionType.JUMP,
         )
     }
 
@@ -26,6 +44,7 @@ class Plugin: JavaPlugin() {
                 PotionType.INSTANT_DAMAGE -> "wassup hoe"
                 PotionType.INSTANT_HEAL -> "hurts if ur already dead"
                 PotionType.INVISIBILITY -> "john cena"
+                PotionType.JUMP -> "bad bunny"
                 else -> throw Exception("Unexpected potion type")
             }
 
