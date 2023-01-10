@@ -7,59 +7,39 @@ import org.bukkit.inventory.meta.PotionMeta
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.potion.PotionData
 import org.bukkit.potion.PotionType
+import java.lang.Exception
 
 class Plugin: JavaPlugin() {
+    companion object {
+        val TIPPED_ARROW_POTION_TYPES = arrayOf(
+            PotionType.FIRE_RESISTANCE,
+            PotionType.INSTANT_DAMAGE,
+            PotionType.INSTANT_HEAL,
+            PotionType.INVISIBILITY,
+        )
+    }
+
     override fun onEnable() {
-        data class TippedArrowRecipe(
-            val potionType: PotionType,
-            val extendable: Boolean,
-            val upgradable: Boolean,
-            val displayName: String,
-        )
-
-        // Display names courtesy of @UnicornFortune1 😜
-        val recipes = arrayOf(
-            TippedArrowRecipe(
-                PotionType.FIRE_RESISTANCE,
-                extendable = true,
-                upgradable = false,
-                displayName = "boom chakalakalaka",
-            ),
-            TippedArrowRecipe(
-                PotionType.INSTANT_DAMAGE,
-                extendable = false,
-                upgradable = true,
-                displayName = "wassup hoe",
-            ),
-            TippedArrowRecipe(
-                PotionType.INSTANT_HEAL,
-                extendable = false,
-                upgradable = true,
-                displayName = "hurts if ur already dead",
-            ),
-            TippedArrowRecipe(
-                PotionType.INVISIBILITY,
-                extendable = true,
-                upgradable = false,
-                displayName = "john cena",
-            ),
-        )
-
-        for (recipe in recipes) {
-            addTippedArrowRecipe(PotionData(recipe.potionType), recipe.displayName)
-
-            if (recipe.extendable) {
-                addTippedArrowRecipe(
-                    PotionData(recipe.potionType, true, false),
-                    recipe.displayName,
-                )
+        for (potionType in TIPPED_ARROW_POTION_TYPES) {
+            val displayName = when (potionType) {
+                PotionType.FIRE_RESISTANCE -> "boom chakalakalaka"
+                PotionType.INSTANT_DAMAGE -> "wassup hoe"
+                PotionType.INSTANT_HEAL -> "hurts if ur already dead"
+                PotionType.INVISIBILITY -> "john cena"
+                else -> throw Exception("Unexpected potion type")
             }
 
-            if (recipe.upgradable) {
-                addTippedArrowRecipe(
-                    PotionData(recipe.potionType, false, true),
-                    recipe.displayName,
-                )
+            // Add regular recipe
+            addTippedArrowRecipe(PotionData(potionType), displayName)
+
+            // Add redstone potion recipe, if possible
+            if (potionType.isExtendable) {
+                addTippedArrowRecipe(PotionData(potionType, true, false), displayName)
+            }
+
+            // Add glowstone potion recipe, if possible
+            if (potionType.isUpgradeable) {
+                addTippedArrowRecipe(PotionData(potionType, false, true), displayName)
             }
         }
     }
