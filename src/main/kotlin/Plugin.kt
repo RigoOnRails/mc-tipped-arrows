@@ -23,7 +23,7 @@ import java.lang.Exception
 //Arrow of Strength
 //Arrow of Swiftness
 //Arrow of the Turtle Master
-Arrow of Water Breathing
+//Arrow of Water Breathing
 Arrow of Weakness
  */
 
@@ -43,6 +43,7 @@ class Plugin: JavaPlugin() {
             PotionType.STRENGTH,
             PotionType.SPEED,
             PotionType.TURTLE_MASTER,
+            PotionType.WATER_BREATHING,
         )
     }
 
@@ -63,6 +64,7 @@ class Plugin: JavaPlugin() {
                 PotionType.STRENGTH -> "steroid arrows"
                 PotionType.SPEED -> "DO YOU WANT TO DO SOME FUCKING COCAINE"
                 PotionType.TURTLE_MASTER -> "now u a turtle"
+                PotionType.WATER_BREATHING -> "now u a fish"
                 else -> throw Exception("Unexpected potion type")
             }
 
