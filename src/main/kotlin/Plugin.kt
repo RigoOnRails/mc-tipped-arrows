@@ -75,8 +75,17 @@ class Plugin: JavaPlugin() {
         tippedArrowsMeta.basePotionData = potionData
         tippedArrows.itemMeta = tippedArrowsMeta
 
+        // Recipe
+        val recipeKeyName = fun(): String {
+            val segments = mutableListOf(potionData.type.name, "tipped_arrow")
+            if (potionData.isExtended) segments.add("extended")
+            if (potionData.isUpgraded) segments.add("upgraded")
+            return segments.joinToString("_")
+        }()
+
+        val recipe = ShapedRecipe(NamespacedKey(this, recipeKeyName), tippedArrows)
+
         // Require 8 arrows around 1 potion for the recipe.
-        val recipe = ShapedRecipe(NamespacedKey(this, potionData.type.name + "_tipped_arrow"), tippedArrows)
         recipe.shape(
             "AAA",
             "APA",
